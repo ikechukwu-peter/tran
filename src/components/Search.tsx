@@ -6,8 +6,7 @@ import SearchInterface from "./interface/search.interface";
 export const Search: FC<SearchInterface> = ({
   searchText,
   setSearchText,
-  filter,
-  setFilter,
+  filteredOptions,
 }) => {
   return (
     <>
@@ -26,19 +25,23 @@ export const Search: FC<SearchInterface> = ({
             value={searchText}
             onChange={(e) => setSearchText(e.target.value.trim().toLowerCase())}
             placeholder="Type a name here to search..."
-            color="gray.600"
+            color="brand.600"
             fontWeight={600}
-            bg="white"
-            borderColor={"orange.300"}
+            bg="brand.300"
+            borderColor={!!filteredOptions?.length ? "brand.500" : "brand.200"}
             borderWidth="2px"
             _focus={{
-              borderColor: "teal.600",
+              borderColor: !!filteredOptions?.length
+                ? "brand.500"
+                : "brand.200",
             }}
             _hover={{
-              borderColor: "teal.600",
+              borderColor: !!filteredOptions?.length
+                ? "brand.500"
+                : "brand.200",
             }}
             _active={{
-              borderColor: "teal.600",
+              borderColor: !!filteredOptions?.length ? "teal.600" : "red.900",
             }}
           />
         </FormField>

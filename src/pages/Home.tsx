@@ -1,6 +1,8 @@
 import { useQuery, gql } from "@apollo/client";
 import Transactions from "../components/Transactions";
 import { Box, Center, Container } from "@chakra-ui/react";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
 
 const TRANSACTIONS_QUERY = gql`
   {
@@ -18,12 +20,12 @@ const Home = () => {
   const { data, loading, error } = useQuery(TRANSACTIONS_QUERY);
 
   return (
-    <Box bg="gray.800">
+    <Box bg="brand.100">
       <Container maxW={"container.xl"} overflowWrap="break-word">
         {loading ? (
-          <p>Loading...</p>
+          <Loading />
         ) : error ? (
-          <pre>{error?.message}</pre>
+          <Error {...error} />
         ) : (
           <Center>
             <Transactions {...data} />
