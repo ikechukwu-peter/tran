@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, useMediaQuery } from "@chakra-ui/react";
 import { FC } from "react";
 import Transaction from "./interface/transactions.interface";
 
@@ -11,14 +11,15 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
   date,
   transactions,
 }) => {
+  const [isLargerThan600px] = useMediaQuery("(min-width: 600px)");
   return (
-    <Box w={"100%"} overflow="hidden">
+    <Box>
       <Box
         py={{
           sm: "1rem",
-          base: "2rem",
-          md: "2.3rem",
-          lg: "2.6rem",
+          base: "1rem",
+          md: "1.4rem",
+          lg: "1.5rem",
         }}
       >
         <Heading
@@ -91,7 +92,7 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
               color="brand.300"
               border={"2px"}
               borderColor="brand.700"
-              minW="280px"
+              minW={isLargerThan600px ? "350px" : "280px"}
               minH={"10px"}
             >
               <Heading color="brand.300" fontSize={{ base: "1rem" }}>

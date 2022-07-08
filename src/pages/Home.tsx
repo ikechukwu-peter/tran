@@ -27,9 +27,7 @@ const Home = () => {
         ) : error ? (
           <Error {...error} />
         ) : (
-          <Center>
-            <Transactions {...data} />
-          </Center>
+          <Transactions {...data} />
         )}
       </Container>
     </Box>

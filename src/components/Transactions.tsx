@@ -1,5 +1,5 @@
 import { Box, Heading, Select, SimpleGrid } from "@chakra-ui/react";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Transaction from "./interface/transactions.interface";
 import TransactionInterface from "./interface/transactions.interface";
 import { Search } from "./Search";
@@ -70,7 +70,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
     filteredOptions,
   };
   return (
-    <>
+    <Box w={["100%", "100%", "80%", "80%"]} m="auto">
       <Search {...searchProps} />
 
       <SimpleGrid columns={[2, 2, 2, 2]} spacing={[4, 4]}>
@@ -109,7 +109,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
           </Heading>
         </Box>
       )}
-    </>
+    </Box>
   );
 };
 
