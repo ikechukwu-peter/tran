@@ -11,6 +11,8 @@
 - I used a React UI library(ChakraUI) to make styling faster.
 
 - While looking at the wireframe, I decided to make the box close to the data show the id of whatever was displayed
+- Google font for font
+- A theme file to contain resuable colors and so on
 
 <h2 align='center'>Shortcuts</h2>
 

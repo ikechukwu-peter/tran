@@ -104,7 +104,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
         </>
       ) : (
         <Box my="1.3rem">
-          <Heading color="brand.300" fontSize={"2rem"} fontWeight={700}>
+          <Heading color="brand.300" fontSize={"1.5rem"} fontWeight={700}>
             No transactions matches your search.
           </Heading>
         </Box>
