@@ -13,7 +13,7 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
 }) => {
   const [isLargerThan600px] = useMediaQuery("(min-width: 600px)");
   return (
-    <Box>
+    <Box overflow={"hidden"} width="100%">
       <Box
         py={{
           sm: "1rem",
@@ -45,15 +45,15 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
             key={index}
             gap={{
               sm: "2rem",
-              base: "1rem",
+              base: ".4rem",
               md: "2rem",
               lg: "2.3rem",
               xl: "2.5rem",
             }}
             align="flex-start"
             justify={"flex-start"}
-            py="1rem"
-            direction={{ base: "column", md: "row" }}
+            py={{ base: ".5rem", md: "1rem" }}
+            direction={{ sm: "column", base: "row", md: "row" }}
           >
             <Box>
               <Heading
@@ -76,7 +76,7 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
             <Flex
               gap={{
                 sm: "2rem",
-                base: "2.2rem",
+                base: "1rem",
                 md: "2.5rem",
                 lg: "3rem",
                 xl: "4rem",
@@ -92,18 +92,53 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
               color="brand.300"
               border={"2px"}
               borderColor="brand.700"
-              minW={isLargerThan600px ? "350px" : "280px"}
+              minW={isLargerThan600px ? "350px" : "225px"}
               minH={"10px"}
             >
-              <Heading color="brand.300" fontSize={{ base: "1rem" }}>
-                Name <Text> {name}</Text>
-              </Heading>{" "}
-              <Heading color="brand.300" fontSize={{ base: "1rem" }}>
-                Status <Text> {status}</Text>
-              </Heading>
-              <Heading color="brand.300" fontSize={{ base: "1rem" }}>
-                Type <Text> {type}</Text>
-              </Heading>
+              <Box>
+                <Heading color="brand.300" fontSize={{ base: "1rem" }}>
+                  Name
+                </Heading>{" "}
+                <Text
+                  color="brand.300"
+                  fontWeight="500"
+                  fontSize={{ base: "1rem" }}
+                  overflowWrap="anywhere"
+                >
+                  {" "}
+                  {name}
+                </Text>
+              </Box>
+
+              <Box>
+                <Heading color="brand.300" fontSize={{ base: "1rem" }}>
+                  Status
+                </Heading>{" "}
+                <Text
+                  color="brand.300"
+                  fontWeight="500"
+                  fontSize={{ base: "1rem" }}
+                  overflowWrap="anywhere"
+                >
+                  {" "}
+                  {status}
+                </Text>
+              </Box>
+
+              <Box>
+                <Heading color="brand.300" fontSize={{ base: "1rem" }}>
+                  Type
+                </Heading>{" "}
+                <Text
+                  color="brand.300"
+                  fontSize={{ base: "1rem" }}
+                  fontWeight="500"
+                  overflowWrap="anywhere"
+                >
+                  {" "}
+                  {type}
+                </Text>
+              </Box>
             </Flex>
           </Flex>
         ))}

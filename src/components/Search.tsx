@@ -24,11 +24,11 @@ export const Search: FC<SearchInterface> = ({
             type="text"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value.trim().toLowerCase())}
-            placeholder="Type a name here to search..."
+            placeholder="Type to search..."
             color="brand.600"
             fontWeight={600}
             bg="brand.300"
-            borderColor={!!filteredOptions?.length ? "brand.500" : "brand.200"}
+            borderColor={!!filteredOptions?.length ? "brand.600" : "brand.200"}
             borderWidth="2px"
             _focus={{
               borderColor: !!filteredOptions?.length
