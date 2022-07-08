@@ -70,7 +70,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
     filteredOptions,
   };
   return (
-    <div>
+    <>
       <Search {...searchProps} />
 
       <SimpleGrid columns={[2, 2, 2, 2]} spacing={[4, 4]}>
@@ -109,7 +109,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
           </Heading>
         </Box>
       )}
-    </div>
+    </>
   );
 };
 
