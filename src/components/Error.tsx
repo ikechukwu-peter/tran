@@ -14,11 +14,11 @@ const Error: FC<error> = ({ message }) => {
       direction={"column"}
     >
       <Center flexDirection={"column"}>
-        <Heading color="white" fontSize={"2rem"} fontWeight={700}>
+        <Heading color="white" fontSize={"1.5rem"} fontWeight={700}>
           {message}.
         </Heading>
         <Text color="white" fontWeight={600}>
-          Kindly check your internet connection and try again
+          Kindly check your internet connection, then refresh the page.
         </Text>
       </Center>
     </Flex>

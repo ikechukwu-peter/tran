@@ -1,23 +1,18 @@
-import { Box, Heading, Select, SimpleGrid } from "@chakra-ui/react";
+import { Box, Select, SimpleGrid } from "@chakra-ui/react";
 import { FC, useState } from "react";
-import Transaction from "./interface/transactions.interface";
 import TransactionInterface from "./interface/transactions.interface";
 import { Search } from "./Search";
 import SingleTransaction from "./SingleTransaction";
-
-//dateTypes
-type dateArrayTypes = {
-  [key: string]: Transaction[];
-};
+import { dateArrayTypes } from "./interface/transactions.interface";
 
 const Transactions: FC<TransactionInterface> = (props) => {
   const [searchText, setSearchText] = useState("");
   const [status, setStatus] = useState("");
   const [type, setType] = useState("");
-  const [filter, setFilter] = useState(props.transactions);
+  const [transactions, setTransactions] = useState(props.transactions);
 
   //filter status
-  const statusFilter = filter.filter(
+  const statusFilter = transactions.filter(
     (transaction) =>
       transaction.status.toLowerCase().includes(status.toLocaleLowerCase()) ||
       status === ""
@@ -55,7 +50,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
     {}
   );
 
-  // Edit: to add it in the array format
+  // add it in the array format
   const groupArrays = Object.keys(groups).map((date) => {
     return {
       date,
@@ -73,7 +68,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
     <Box w={["100%", "100%", "80%", "80%"]} m="auto">
       <Search {...searchProps} />
 
-      <SimpleGrid columns={[2, 2, 2, 2]} spacing={[4, 4]}>
+      <SimpleGrid columns={[2]} spacing={[4]}>
         <Select
           placeholder="Sort by status"
           value={status}
@@ -96,18 +91,12 @@ const Transactions: FC<TransactionInterface> = (props) => {
         </Select>
       </SimpleGrid>
 
-      {!!groupArrays.length ? (
+      {!!groupArrays.length && (
         <>
           {groupArrays.map((data, index) => (
             <SingleTransaction key={index} {...data} />
           ))}
         </>
-      ) : (
-        <Box my="1.3rem">
-          <Heading color="brand.300" fontSize={"1.5rem"} fontWeight={700}>
-            No transactions matches your search.
-          </Heading>
-        </Box>
       )}
     </Box>
   );

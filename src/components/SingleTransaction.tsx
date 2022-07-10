@@ -1,11 +1,6 @@
 import { Box, Flex, Heading, Text, useMediaQuery } from "@chakra-ui/react";
 import { FC } from "react";
-import Transaction from "./interface/transactions.interface";
-
-type SingleTransactionInterface = {
-  date: string;
-  transactions: Transaction[];
-};
+import { SingleTransactionInterface } from "./interface/transactions.interface";
 
 const SingleTransaction: FC<SingleTransactionInterface> = ({
   date,
@@ -33,7 +28,7 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
           color="brand.300"
           border={"2px"}
           borderColor="brand.700"
-          fontSize={{ base: "1rem", md: "1rem", lg: "1.4rem", xl: "1rem" }}
+          fontSize={{ base: "1rem", md: "1rem", lg: "1.4rem", xl: "1.6rem" }}
         >
           {date}
         </Heading>
@@ -44,8 +39,8 @@ const SingleTransaction: FC<SingleTransactionInterface> = ({
           <Flex
             key={index}
             gap={{
-              sm: "2rem",
-              base: ".4rem",
+              sm: "1rem",
+              base: "1rem",
               md: "2rem",
               lg: "2.3rem",
               xl: "2.5rem",

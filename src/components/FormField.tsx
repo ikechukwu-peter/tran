@@ -1,31 +1,27 @@
 import { FC } from "react";
-import {
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-} from "@chakra-ui/react";
-import FormInterface from "./interface/formInterface";
+import { FormControl, FormErrorMessage, Text } from "@chakra-ui/react";
+import FormInterface from "./interface/form.interface";
 
 const FormField: FC<FormInterface> = ({
-  error,
-  label,
+  isInvalid,
   children,
-  helper,
-  isRequired,
-  isReadOnly,
   errorMessage,
 }) => {
   return (
-    <FormControl
-      isInvalid={error}
-      isRequired={isRequired}
-      isReadOnly={isReadOnly}
-    >
-      {label && <FormLabel color="gray.100">{label}</FormLabel>}
+    <FormControl isInvalid={isInvalid}>
       {children}
-      {helper && <FormHelperText>{helper}</FormHelperText>}
-      {error && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
+      {isInvalid && (
+        <FormErrorMessage>
+          <Text
+            my="1.3rem"
+            color="brand.300"
+            fontSize={"1.5rem"}
+            fontWeight={700}
+          >
+            {errorMessage}{" "}
+          </Text>
+        </FormErrorMessage>
+      )}
     </FormControl>
   );
 };

@@ -19,7 +19,10 @@ export const Search: FC<SearchInterface> = ({
           xl: "2.4rem",
         }}
       >
-        <FormField>
+        <FormField
+          isInvalid={!filteredOptions.length}
+          errorMessage={" No transactions matches your search."}
+        >
           <Input
             type="text"
             value={searchText}
@@ -28,20 +31,16 @@ export const Search: FC<SearchInterface> = ({
             color="brand.600"
             fontWeight={600}
             bg="brand.300"
-            borderColor={!!filteredOptions?.length ? "brand.600" : "brand.200"}
+            borderColor={!!filteredOptions.length ? "brand.600" : "brand.200"}
             borderWidth="2px"
             _focus={{
-              borderColor: !!filteredOptions?.length
-                ? "brand.500"
-                : "brand.200",
+              borderColor: !!filteredOptions.length ? "brand.500" : "brand.200",
             }}
             _hover={{
-              borderColor: !!filteredOptions?.length
-                ? "brand.500"
-                : "brand.200",
+              borderColor: !!filteredOptions.length ? "brand.500" : "brand.200",
             }}
             _active={{
-              borderColor: !!filteredOptions?.length ? "teal.600" : "red.900",
+              borderColor: !!filteredOptions.length ? "brand.500" : "brand.200",
             }}
           />
         </FormField>
