@@ -19,10 +19,7 @@ export const Search: FC<SearchInterface> = ({
           xl: "2.4rem",
         }}
       >
-        <FormField
-          isInvalid={!filteredOptions.length}
-          errorMessage={" No transactions matches your search."}
-        >
+        <FormField isInvalid={!filteredOptions.length}>
           <Input
             type="text"
             value={searchText}

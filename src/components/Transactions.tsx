@@ -1,4 +1,4 @@
-import { Box, Select, SimpleGrid } from "@chakra-ui/react";
+import { Box, Select, SimpleGrid, Text } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import TransactionInterface from "./interface/transactions.interface";
 import { Search } from "./Search";
@@ -37,7 +37,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
   );
 
   // this gives an object with dates as keys
-  const groups = filteredOptions.reduce(
+  const groupByDateArray = filteredOptions.reduce(
     (groups: dateArrayTypes, transactions) => {
       const date = transactions.date;
       if (!groups[date]) {
@@ -51,10 +51,10 @@ const Transactions: FC<TransactionInterface> = (props) => {
   );
 
   // add it in the array format
-  const groupArrays = Object.keys(groups).map((date) => {
+  const groupByDateObj = Object.keys(groupByDateArray).map((date) => {
     return {
       date,
-      transactions: groups[date],
+      transactions: groupByDateArray[date],
     };
   });
 
@@ -91,12 +91,21 @@ const Transactions: FC<TransactionInterface> = (props) => {
         </Select>
       </SimpleGrid>
 
-      {!!groupArrays.length && (
+      {!!groupByDateObj.length ? (
         <>
-          {groupArrays.map((data, index) => (
+          {groupByDateObj.map((data, index) => (
             <SingleTransaction key={index} {...data} />
           ))}
         </>
+      ) : (
+        <Text
+          my="1.3rem"
+          color="brand.300"
+          fontSize={"1.5rem"}
+          fontWeight={700}
+        >
+          No transactions matches your search.
+        </Text>
       )}
     </Box>
   );
