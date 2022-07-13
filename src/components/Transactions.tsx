@@ -80,7 +80,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
         <Button
           onClick={() => setOption({ ...option, type: "credit" })}
           bg={option.type === "credit" ? "brand.200" : "brand.300"}
-          color={option.type === "credit" ? "brand.300" : "brand.600"}
+          color={option.type === "credit" ? "brand.700" : "brand.600"}
           _hover={{
             bg: option.type === "credit" ? "brand.300" : "brand.200",
           }}
@@ -90,7 +90,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
         <Button
           onClick={() => setOption({ ...option, type: "debit" })}
           bg={option.type === "debit" ? "brand.200" : "brand.300"}
-          color={option.type === "debit" ? "brand.300" : "brand.600"}
+          color={option.type === "debit" ? "brand.700" : "brand.600"}
           _hover={{
             bg: option.type === "debit" ? "brand.300" : "brand.200",
           }}
@@ -100,7 +100,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
         <Button
           onClick={() => setOption({ ...option, status: "success" })}
           bg={option.status === "success" ? "brand.200" : "brand.300"}
-          color={option.status === "success" ? "brand.300" : "brand.600"}
+          color={option.status === "success" ? "brand.700" : "brand.600"}
           _hover={{
             bg: option.status === "success" ? "brand.300" : "brand.200",
           }}
@@ -110,7 +110,7 @@ const Transactions: FC<TransactionInterface> = (props) => {
         <Button
           onClick={() => setOption({ ...option, status: "error" })}
           bg={option.status === "error" ? "brand.200" : "brand.300"}
-          color={option.status === "error" ? "brand.300" : "brand.600"}
+          color={option.status === "error" ? "brand.700" : "brand.600"}
           _hover={{
             bg: option.status === "error" ? "brand.300" : "brand.200",
           }}
