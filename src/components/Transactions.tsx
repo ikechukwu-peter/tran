@@ -1,4 +1,4 @@
-import { Box, Select, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, useRadio } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import TransactionInterface from "./interface/transactions.interface";
 import { Search } from "./Search";
@@ -7,22 +7,25 @@ import { dateArrayTypes } from "./interface/transactions.interface";
 
 const Transactions: FC<TransactionInterface> = (props) => {
   const [searchText, setSearchText] = useState("");
-  const [status, setStatus] = useState("");
-  const [type, setType] = useState("");
   const [transactions, setTransactions] = useState(props.transactions);
+  const [option, setOption] = useState({
+    status: "",
+    type: "",
+  });
 
   //filter status
   const statusFilter = transactions.filter(
     (transaction) =>
-      transaction.status.toLowerCase().includes(status.toLocaleLowerCase()) ||
-      status === ""
+      transaction.status
+        .toLowerCase()
+        .includes(option.status.toLocaleLowerCase()) || option.status === ""
   );
 
-  //filter type
   const typeFilter = statusFilter.filter(
     (transaction) =>
-      transaction.type.toLowerCase().includes(type.toLocaleLowerCase()) ||
-      type === ""
+      transaction.type
+        .toLowerCase()
+        .includes(option.type.toLocaleLowerCase()) || option.type === ""
   );
 
   //filter status, type and name once a user start typing
@@ -64,32 +67,57 @@ const Transactions: FC<TransactionInterface> = (props) => {
     setSearchText,
     filteredOptions,
   };
+
   return (
     <Box w={["100%", "100%", "80%", "80%"]} m="auto">
       <Search {...searchProps} />
 
-      <SimpleGrid columns={[2]} spacing={[4]}>
-        <Select
-          placeholder="Sort by status"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          bg="brand.300"
-          color="brand.400"
+      <Flex
+        justify={"space-between"}
+        align="center"
+        gap={{ base: "1rem", md: ".2rem" }}
+      >
+        <Button
+          onClick={() => setOption({ ...option, type: "credit" })}
+          bg={option.type === "credit" ? "brand.200" : "brand.300"}
+          color={option.type === "credit" ? "brand.300" : "brand.600"}
+          _hover={{
+            bg: option.type === "credit" ? "brand.300" : "brand.200",
+          }}
         >
-          <option value="pending">pending</option>
-          <option value="success">success</option>
-        </Select>
-        <Select
-          bg="brand.300"
-          color="brand.400"
-          placeholder="Sort by type"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
+          Credit
+        </Button>
+        <Button
+          onClick={() => setOption({ ...option, type: "debit" })}
+          bg={option.type === "debit" ? "brand.200" : "brand.300"}
+          color={option.type === "debit" ? "brand.300" : "brand.600"}
+          _hover={{
+            bg: option.type === "debit" ? "brand.300" : "brand.200",
+          }}
         >
-          <option value="debit">debit</option>
-          <option value="credit">credit</option>
-        </Select>
-      </SimpleGrid>
+          Debit
+        </Button>
+        <Button
+          onClick={() => setOption({ ...option, status: "success" })}
+          bg={option.status === "success" ? "brand.200" : "brand.300"}
+          color={option.status === "success" ? "brand.300" : "brand.600"}
+          _hover={{
+            bg: option.status === "success" ? "brand.300" : "brand.200",
+          }}
+        >
+          Success
+        </Button>
+        <Button
+          onClick={() => setOption({ ...option, status: "error" })}
+          bg={option.status === "error" ? "brand.200" : "brand.300"}
+          color={option.status === "error" ? "brand.300" : "brand.600"}
+          _hover={{
+            bg: option.status === "error" ? "brand.300" : "brand.200",
+          }}
+        >
+          Error
+        </Button>
+      </Flex>
 
       {!!groupByDateObj.length ? (
         <>
