@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text, useMediaQuery } from "@chakra-ui/react";
 import { FC } from "react";
-import { SingleTransactionInterface } from "./interface/transactions.interface";
+import { SingleTransactionInterface } from "../interface/transactions.interface";
 
 const SingleTransaction: FC<SingleTransactionInterface> = ({
   date,

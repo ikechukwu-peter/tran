@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Input } from "@chakra-ui/react";
 import { FC } from "react";
 import FormField from "./FormField";
-import SearchInterface from "./interface/search.interface";
+import SearchInterface from "../interface/search.interface";
 
 export const Search: FC<SearchInterface> = ({
   searchText,

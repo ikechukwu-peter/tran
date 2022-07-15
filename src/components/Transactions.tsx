@@ -1,9 +1,9 @@
 import { Box, Button, Flex, Text, useRadio } from "@chakra-ui/react";
 import { FC, useState } from "react";
-import TransactionInterface from "./interface/transactions.interface";
+import TransactionInterface from "../interface/transactions.interface";
 import { Search } from "./Search";
 import SingleTransaction from "./SingleTransaction";
-import { dateArrayTypes } from "./interface/transactions.interface";
+import { dateArrayTypes } from "../interface/transactions.interface";
 
 const Transactions: FC<TransactionInterface> = (props) => {
   const [searchText, setSearchText] = useState("");
