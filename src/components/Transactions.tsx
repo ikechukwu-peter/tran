@@ -8,10 +8,19 @@ import { dateArrayTypes } from "./interface/transactions.interface";
 const Transactions: FC<TransactionInterface> = (props) => {
   const [searchText, setSearchText] = useState("");
   const [transactions, setTransactions] = useState(props.transactions);
-  const [option, setOption] = useState({
+
+  //initial state for filtering, easy to clear
+  const filterInitialState = {
     status: "",
     type: "",
-  });
+  };
+  const [option, setOption] = useState(filterInitialState);
+
+  //clears the whole search state
+  const clearState = () => {
+    setSearchText("");
+    setOption(filterInitialState);
+  };
 
   //filter status
   const statusFilter = transactions.filter(
@@ -66,62 +75,14 @@ const Transactions: FC<TransactionInterface> = (props) => {
     searchText,
     setSearchText,
     filteredOptions,
+    option,
+    setOption,
+    clearState,
   };
 
   return (
     <Box w={["100%", "100%", "80%", "80%"]} m="auto">
       <Search {...searchProps} />
-
-      <Flex
-        justify={"space-between"}
-        align="center"
-        gap={{ base: "1rem", md: ".2rem" }}
-      >
-        <Button
-          onClick={() => setOption({ ...option, type: "credit" })}
-          bg={option.type === "credit" ? "brand.200" : "brand.300"}
-          color={option.type === "credit" ? "brand.300" : "brand.400"}
-          _hover={{
-            bg: option.type === "credit" ? "brand.300" : "brand.200",
-            color: option.type === "credit" ? "brand.400" : "brand.400",
-          }}
-        >
-          Credit
-        </Button>
-        <Button
-          onClick={() => setOption({ ...option, type: "debit" })}
-          bg={option.type === "debit" ? "brand.200" : "brand.300"}
-          color={option.type === "debit" ? "brand.300" : "brand.400"}
-          _hover={{
-            bg: option.type === "debit" ? "brand.300" : "brand.200",
-            color: option.type === "debit" ? "brand.400" : "brand.400",
-          }}
-        >
-          Debit
-        </Button>
-        <Button
-          onClick={() => setOption({ ...option, status: "success" })}
-          bg={option.status === "success" ? "brand.200" : "brand.300"}
-          color={option.status === "success" ? "brand.300" : "brand.400"}
-          _hover={{
-            bg: option.status === "success" ? "brand.300" : "brand.200",
-            color: option.status === "success" ? "brand.400" : "brand.400",
-          }}
-        >
-          Success
-        </Button>
-        <Button
-          onClick={() => setOption({ ...option, status: "error" })}
-          bg={option.status === "error" ? "brand.200" : "brand.300"}
-          color={option.status === "error" ? "brand.300" : "brand.400"}
-          _hover={{
-            bg: option.status === "error" ? "brand.300" : "brand.200",
-            color: option.status === "error" ? "brand.400" : "brand.400",
-          }}
-        >
-          Error
-        </Button>
-      </Flex>
 
       {!!groupByDateObj.length ? (
         <>
